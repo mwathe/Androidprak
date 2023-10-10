@@ -31,12 +31,18 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.alan.mvvplogin.navigation.ROUTE_HOME
+import com.alan.mvvplogin.navigation.ROUTE_LOGIN
+import com.alan.mvvplogin.navigation.ROUTE_PRODUCT
+import com.alan.mvvplogin.navigation.ROUTE_REGISTER
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen() {
+fun LoginScreen(navController: NavHostController) {
     var email by remember { mutableStateOf(TextFieldValue("")) }
     var Password by remember { mutableStateOf(TextFieldValue("")) }
     var ConfirmPassword by remember { mutableStateOf(TextFieldValue("")) }
@@ -112,7 +118,7 @@ fun LoginScreen() {
 //
 //        )
 
-        Button(onClick = { /*TODO*/ },
+        Button(onClick = { navController.navigate(ROUTE_PRODUCT) },
             colors = ButtonDefaults.buttonColors(Color.Green),
             shape = CircleShape,
             modifier = Modifier.fillMaxWidth())
@@ -126,7 +132,7 @@ fun LoginScreen() {
 Spacer(modifier = Modifier.height(30.dp))
 
 
-        Button(onClick = { /*TODO*/ },
+        Button(onClick = { navController.navigate(ROUTE_REGISTER) },
             colors = ButtonDefaults.buttonColors(Color.Red),
             shape = CircleShape,
             modifier = Modifier.fillMaxWidth())
@@ -148,6 +154,6 @@ Spacer(modifier = Modifier.height(30.dp))
 @Composable
 fun loginscreepre() {
 
-    LoginScreen()
+    LoginScreen(rememberNavController())
 
 }
